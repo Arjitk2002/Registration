@@ -18,6 +18,7 @@ const EmailAddress = forwardRef((props, ref) => {
   const handleMail = () => {
     const isValidEmail = validateEmail(email);
     setValid(isValidEmail);
+    props.handleAll(email);
   };
 
   useImperativeHandle(ref, () => ({

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./Gender.css";
 
-const Gender = () => {
+const Gender = (props) => {
   const [selectedGender, setSelecetedGender] = useState("");
 
   const handleOnChange = (event) => {
     setSelecetedGender(event.target.value);
+    props.handleAll(event.target.value);
   };
 
   return (

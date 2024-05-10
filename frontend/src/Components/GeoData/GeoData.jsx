@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./GeoData.css";
 // import axios from "axios";
-const GeoData = () => {
+const GeoData = (props) => {
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
@@ -51,23 +51,26 @@ const GeoData = () => {
       setCities(finalResult.data);
     };
     fetchCities();
-  }, [state_name]);
+  }, [state_name, country_code]);
 
   const handleCountry = (e) => {
     const selectedCountryId = e.target.value;
+
     setCountry(e.target.value);
-    // console.log(selectedCountryId);
     setCountry_code(selectedCountryId);
-    // console.log(country_code);
+    console.log("Check", country);
+    props.handleCtr(e.target.value);
   };
 
   const handleCity = (e) => {
     setCity(e.target.value);
+    props.handleCt(e.target.value);
   };
 
   const handleState = (e) => {
     setState(e.target.value);
     setState_name(e.target.value);
+    props.handleSt(e.target.value);
   };
 
   return (
@@ -82,7 +85,7 @@ const GeoData = () => {
           className="geo-elements"
         >
           {countries.map((e) => (
-            <option key={e.iso} value={e.iso}>
+            <option key={e.name} value={e.iso}>
               {e.name}
             </option>
           ))}
@@ -95,9 +98,9 @@ const GeoData = () => {
           ))}
         </select>
         <select value={city} onChange={handleCity} className="geo-elements">
-          {cities.map((city) => (
-            <option key={city.state_name} value={city.state_name}>
-              {city.name}
+          {cities.map((e) => (
+            <option key={e.state_name} value={e.state_name}>
+              {e.name}
             </option>
           ))}
         </select>

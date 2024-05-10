@@ -10,10 +10,7 @@ const LastName = (props) => {
 
     if (value === "" || onlyAlphabets.test(value)) {
       setInputValue(value);
-    }
-
-    if (value !== null) {
-      props.validate(true);
+      props.handleAll(value);
     }
   };
 

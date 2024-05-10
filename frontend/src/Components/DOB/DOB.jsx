@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./DOB.css";
 
-const Dob = () => {
+const Dob = (props) => {
   const [selectedDate, setSelectedDate] = useState("");
   const [age, setAge] = useState(null);
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
+    props.handleAll(selectedDate);
   };
   useEffect(() => {
     calculateAge();
