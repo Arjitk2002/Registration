@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+.email-text {
+    font-family: "Roboto Condensed";
+    font-size: 1rem;
+    letter-spacing: 0.02rem;
+}
+
+.email-value {
+    height: 1.2rem;
+    width: 100%;
+    padding-left: 0.2rem;
+}
+
+.email-value:focus {
+    outline: 1px solid black;
+}
+
+.not-valid-mail {
+    color: red;
+    font-size: 0.9rem;
+    margin: 0.2rem 0 0 0;
+}

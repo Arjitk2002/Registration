@@ -1,0 +1,37 @@
+.dob-text {
+    font-family: "Roboto Condensed";
+    font-size: 1rem;
+    letter-spacing: 0.02rem;
+} 
+
+.dob-input {
+    cursor: pointer;
+}
+
+.dob-input:focus {
+    outline: 1px solid black;
+}
+
+.separator {
+    border-top: 1px solid rgb(193, 193, 193);
+    width: 100%;
+    margin: 0.8rem 0 0.4rem 0
+}
+
+.age-section {
+    margin: 1rem 0 0 0;
+}
+
+.age-text {
+    font-family: "Roboto Condensed";
+    font-size: 1rem;
+    letter-spacing: 0.02rem;
+}
+
+.age-value {
+    font-family: "Roboto Condensed";
+    font-size: 1rem;
+    letter-spacing: 0.02rem;
+    color: rgba(0, 97, 167, 0.994);
+    font-weight: 700;
+}

@@ -1,0 +1,106 @@
+const Country = require("country-state-city").Country;
+const State = require("country-state-city").State;
+const City = require("country-state-city").City;
+
+// console.log(Country.getAllCountries());
+const { MongoClient, ServerApiVersion } = require("mongodb");
+
+// Replace the placeholder with your Atlas connection string
+const uri = "mongodb://localhost:27017/";
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri);
+
+async function run() {
+  try {
+    // Connect the client to the server (optional starting in v4.7)
+    await client.connect();
+
+    const db = await client.db("Data");
+
+    var countriesBulk = db.collection("countries").initializeOrderedBulkOp();
+    var countries = Country.getAllCountries();
+    countries.forEach((country) => {
+      countriesBulk.insert({ name: country.name, iso: country.isoCode });
+    });
+    countriesBulk.execute();
+    console.log("Countries Added");
+
+    var statesBulk = db.collection("states").initializeOrderedBulkOp();
+    var states = State.getAllStates();
+    states.forEach((state) => {
+      statesBulk.insert({ name: state.name, country_name: state.countryCode });
+    });
+    statesBulk.execute();
+    console.log("States Inserted");
+
+    var citiesBulk = db.collection("cities").initializeOrderedBulkOp();
+    var cities = City.getAllCities();
+    cities.forEach((city) => {
+      citiesBulk.insert({ name: city.name, state_name: city.stateCode });
+    });
+    citiesBulk.execute();
+    console.log("Cities Inserted");
+  } catch {
+    throw console.error("Error Occured");
+  }
+}
+run().catch(console.dir);
+
+
+
+
+new
+
+const Country = require("country-state-city").Country;
+const State = require("country-state-city").State;
+const City = require("country-state-city").City;
+
+console.log(State.getAllStates());
+const { MongoClient, ServerApiVersion } = require("mongodb");
+
+// Replace the placeholder with your Atlas connection string
+const uri = "mongodb://localhost:27017/";
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri);
+
+async function run() {
+  try {
+    // Connect the client to the server (optional starting in v4.7)
+    await client.connect();
+
+    const db = await client.db("DData");
+
+    var countriesBulk = db.collection("countries").initializeOrderedBulkOp();
+    var countries = Country.getAllCountries();
+    countries.forEach((country) => {
+      countriesBulk.insert({ name: country.name, iso: country.isoCode });
+    });
+    countriesBulk.execute();
+    console.log("Countries Added");
+
+    var statesBulk = db.collection("states").initializeOrderedBulkOp();
+    var states = State.getAllStates();
+    states.forEach((state) => {
+      statesBulk.insert({
+        name: state.name,
+        country_name: state.countryCode,
+        state_code: state.isoCode,
+      });
+    });
+    statesBulk.execute();
+    console.log("States Inserted");
+
+    var citiesBulk = db.collection("cities").initializeOrderedBulkOp();
+    var cities = City.getAllCities();
+    cities.forEach((city) => {
+      citiesBulk.insert({ name: city.name, state_name: city.stateCode });
+    });
+    citiesBulk.execute();
+    console.log("Cities Inserted");
+  } catch {
+    throw console.error("Error Occured");
+  }
+}
+run().catch(console.dir);

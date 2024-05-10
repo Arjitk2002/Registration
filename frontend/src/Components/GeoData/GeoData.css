@@ -1,0 +1,26 @@
+.geo-label {
+    font-family: "Roboto Condensed";
+    font-size: 1rem;
+    letter-spacing: 0.02rem;
+    margin: 0 0 0.4rem 0;
+}
+
+.geo-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.geo-elements {
+    width: 5rem;
+    height: 1.2rem;
+    cursor: pointer;
+}
+
+.geo-elements:focus {
+    outline: 1px solid black;
+}
+
+.geo-elements option {
+    font-family: "Roboto Condensed";
+}
